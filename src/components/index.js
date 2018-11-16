@@ -38,7 +38,7 @@ class Listings extends Component {
     window.removeEventListener('scroll', this.onScroll, false)
   }
 
-  ajaxCall = () => new Promise((resolve, reject) => {
+  ajaxCall = () => {
     let x = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : 'trending?'
     app
     .get(`http://api.giphy.com/v1/gifs/${x}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&limit=50`)
@@ -49,7 +49,7 @@ class Listings extends Component {
         this.setState({ listings: response.body.data.sort((a, b) => { return a.import_datetime > b.import_datetime ? 1: -1 })})
       }
     })
-  })
+  }
 
   onScroll = () => {
     let x = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`,
