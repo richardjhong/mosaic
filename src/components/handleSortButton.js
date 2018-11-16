@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class SortButton extends PureComponent {
   render () {
     return (
-      <div className="filter">
+      <div className='filter'>
         <button onClick={this.props.handleSort}>Sort</button>
       </div>
     )

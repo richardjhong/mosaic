@@ -19,11 +19,11 @@ class Listings extends Component {
       max_favorites_counter: 0,
       favorites: [],
       img: {
-        src: "https://media2.giphy.com/media/8w4UoITqyVRhS/100.gif",
-        rating: "G",
-        title: "black and white umbrella GIF",
-        time: "2013-03-20 16:35:50",
-        score: "101124.66",
+        src: 'https://media2.giphy.com/media/8w4UoITqyVRhS/100.gif',
+        rating: 'G',
+        title: 'black and white umbrella GIF',
+        time: '2013-03-20 16:35:50',
+        score: '101124.66',
         original: 'https://media0.giphy.com/media/8w4UoITqyVRhS/giphy.gif'
       }
     }
@@ -65,7 +65,7 @@ class Listings extends Component {
           alert (error)
         } else {
           this.setState({
-            listings : this.state.sortFilter === "Ascending" ?
+            listings : this.state.sortFilter === 'Ascending' ?
             this.state.listings.concat(response.body.data).sort((a, b) => {return a.import_datetime > b.import_datetime ? 1 : -1}) :
             this.state.listings.concat(response.body.data).sort((a, b) => {return a.import_datetime > b.import_datetime ? -1 : 1})
           })
@@ -151,9 +151,9 @@ class Listings extends Component {
 
   render() {
       return (
-        <div id="container" >
-          <div id="container-top">
-            <div id="container-top-left">
+        <div id='container' >
+          <div id='container-top'>
+            <div id='container-top-left'>
               <Filter
                sortFilter={this.state.sortFilter}
                filterCriterion={this.state.filterCriterion}
@@ -162,7 +162,7 @@ class Listings extends Component {
                handleSort={this.handleSort} />
               <SortButton handleSort={this.handleSort} />
             </div>
-            <div id="container-top-right">
+            <div id='container-top-right'>
               <SearchQuery
                onChange={this.handleTextChange}
                onKeyDown={this.onCommentSubmit}
@@ -172,15 +172,15 @@ class Listings extends Component {
             </div>
           </div>
 
-          <div id="container-bottom">
-            <div id="container-bottom-left">
+          <div id='container-bottom'>
+            <div id='container-bottom-left'>
               <ImageInformation
                information={this.state.img}
                max_favorites_counter={this.state.max_favorites_counter}
                favorites={this.state.favorites}
                handleFavoriteClick={this.handleFavoriteClick} />
             </div>
-            <div id="container-bottom-right">
+            <div id='container-bottom-right'>
               <Images
                img={this.state.img}
                listings={this.state.listings}

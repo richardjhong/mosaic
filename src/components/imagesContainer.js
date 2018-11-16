@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 class Images extends PureComponent {
   render () {
     return (
-      <div id="images-container" >
+      <div id='images-container' >
         <hr/>
         {this.props.listings.map((gif, index) => {
           return (
             <img
               onClick={this.props.handleClick}
               src={gif.images.fixed_height_small.url}
-              alt="gif_img"
+              alt='gif_img'
               name={gif.title || 'filler'} 
               data-time={gif.import_datetime}
               data-original={gif.images.original.url}
