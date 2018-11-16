@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchQuery extends Component {
-
+class SearchQuery extends PureComponent {
   render () {
     return (
       <div id="search-container">
         <form onKeyDown={this.props.onKeyDown}>
           searchCriterion: {this.props.searchQuery}
           <br/>
-          <input type="text" onChange={this.props.onChange} placeholder="Insert search word here." />
-          {/* <button id="input" onClick={this.props.onClick}>Search</button> */}
+          <input
+            type="text"
+            onChange={this.props.onChange}
+            placeholder="Insert search word here." />
         </form>
         <hr/>
-        <button id="btn-trending" onClick={this.props.trendingClick} >Trending</button>
+        <button id="btn-trending" onClick={this.props.trendingClick}>Trending</button>
       </div>
     )
   }

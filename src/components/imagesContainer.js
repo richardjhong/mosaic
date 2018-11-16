@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class Images extends Component {
+class Images extends PureComponent {
   render () {
     return (
       <div id="images-container" >
         <hr/>
         {this.props.listings.map((gif, index) => {
           return (
-            <img onClick={this.props.handleClick} src={gif.images.fixed_height_small.url} alt="gif_img" name={gif.title || 'filler'} data-time={gif.import_datetime} data-original={gif.images.original.url} data-rating={gif.rating} data-score={gif._score} key={index}/>
+            <img
+              onClick={this.props.handleClick}
+              src={gif.images.fixed_height_small.url}
+              alt="gif_img"
+              name={gif.title || 'filler'} 
+              data-time={gif.import_datetime}
+              data-original={gif.images.original.url}
+              data-rating={gif.rating}
+              data-score={gif._score}
+              key={index}/>
           )
         })}
       </div>

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types';
 
-class Filter extends React.Component {
+class Filter extends PureComponent {
   render() {
     return (
       <div className='filter'>
@@ -12,7 +12,6 @@ class Filter extends React.Component {
           <option>Ascending</option>
           <option>Descending</option>
         </select>
-
         <form>
           <p>Please select preferred filter criterion:</p>
           <div>
@@ -27,7 +26,6 @@ class Filter extends React.Component {
             <br/>
             <input type="radio" onChange={this.props.handleRadioClick} name="radio" value="title" />
             <label htmlFor="radioButton4">Title</label>
-
           </div>
         </form>
         <br></br>

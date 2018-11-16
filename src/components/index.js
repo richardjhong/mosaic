@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import app from 'superagent';
 import SortButton from './handleSortButton'
 import SearchQuery from './searchQuery'
@@ -7,7 +7,7 @@ import Images from './imagesContainer'
 import ImageInformation from './imageInformationContainer'
 import './styles.css'
 
-class Listings extends React.Component {
+class Listings extends Component {
   constructor() {
     super()
     this.state = {
@@ -16,8 +16,8 @@ class Listings extends React.Component {
       filterCriterion: 'import_datetime',
       offset: 50,
       searchQuery: '',
-      counter: 0,
-      favorites: [], // turn into object
+      max_favorites_counter: 0,
+      favorites: [],
       img: {
         src: "https://media2.giphy.com/media/8w4UoITqyVRhS/100.gif",
         rating: "G",
@@ -109,17 +109,17 @@ class Listings extends React.Component {
   }
 
   handleFavoriteClick = (e) => {
-    if (this.state.counter > 5) {
+    if (this.state.max_favorites_counter > 5) {
       let newArr = this.state.favorites.slice()
-      newArr[this.state.counter%6] = e.target.dataset.downscale
+      newArr[this.state.max_favorites_counter%6] = e.target.dataset.downscale
       this.setState({
         favorites: newArr,
-        counter: this.state.counter + 1
+        max_favorites_counter: this.state.max_favorites_counter + 1
       })
     } else {
       this.setState({
         favorites: this.state.favorites.slice().concat([e.target.dataset.downscale]),
-        counter: this.state.counter + 1
+        max_favorites_counter: this.state.max_favorites_counter + 1
       })
     }
   }
@@ -151,20 +151,37 @@ class Listings extends React.Component {
         <div id="container" >
           <div id="container-top">
             <div id="container-top-left">
-              <Filter sortFilter={this.state.sortFilter} filterCriterion={this.state.filterCriterion} handleRadioClick={this.handleRadioClick} handleChange={this.handleChange} handleSort={this.handleSort} />
+              <Filter
+               sortFilter={this.state.sortFilter}
+               filterCriterion={this.state.filterCriterion}
+               handleRadioClick={this.handleRadioClick}
+               handleChange={this.handleChange}
+               handleSort={this.handleSort} />
               <SortButton handleSort={this.handleSort} />
             </div>
             <div id="container-top-right">
-              <SearchQuery onChange={this.handleTextChange} onKeyDown={this.onCommentSubmit} onClick={this.ajaxCall} trendingClick={this.handleTrendingClick} searchQuery={this.state.searchQuery}/>
+              <SearchQuery
+               onChange={this.handleTextChange}
+               onKeyDown={this.onCommentSubmit}
+               onClick={this.ajaxCall}
+               trendingClick={this.handleTrendingClick}
+               searchQuery={this.state.searchQuery}/>
             </div>
           </div>
 
           <div id="container-bottom">
             <div id="container-bottom-left">
-              <ImageInformation information={this.state.img} counter={this.state.counter} favorites={this.state.favorites} handleFavoriteClick={this.handleFavoriteClick} />
+              <ImageInformation
+               information={this.state.img}
+               max_favorites_counter={this.state.max_favorites_counter}
+               favorites={this.state.favorites}
+               handleFavoriteClick={this.handleFavoriteClick} />
             </div>
             <div id="container-bottom-right">
-              <Images img={this.state.img} listings={this.state.listings} handleClick={this.handleClick} />
+              <Images
+               img={this.state.img}
+               listings={this.state.listings}
+               handleClick={this.handleClick} />
             </div>
           </div>
         </div>
