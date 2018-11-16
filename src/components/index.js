@@ -52,7 +52,8 @@ class Listings extends Component {
   })
 
   onScroll = () => {
-    let x = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`, y = this.state.searchQuery.length > 0 ? `${this.state.searchQuery}` : `what's trending now`
+    let x = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`,
+        y = this.state.searchQuery.length > 0 ? `${this.state.searchQuery}` : `what's trending now`
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       window.alert(`Loading additional 4 images on ${y}`)
       this.setState({
@@ -64,7 +65,9 @@ class Listings extends Component {
           alert (error)
         } else {
           this.setState({
-            listings : this.state.sortFilter === "Ascending" ? this.state.listings.concat(response.body.data).sort((a, b) => {return a.import_datetime > b.import_datetime ? 1 : -1}) : this.state.listings.concat(response.body.data).sort((a, b) => {return a.import_datetime > b.import_datetime ? -1 : 1})
+            listings : this.state.sortFilter === "Ascending" ?
+            this.state.listings.concat(response.body.data).sort((a, b) => {return a.import_datetime > b.import_datetime ? 1 : -1}) :
+            this.state.listings.concat(response.body.data).sort((a, b) => {return a.import_datetime > b.import_datetime ? -1 : 1})
           })
         };
       })
@@ -110,8 +113,8 @@ class Listings extends Component {
 
   handleFavoriteClick = (e) => {
     if (this.state.max_favorites_counter > 5) {
-      let newArr = this.state.favorites.slice()
-      newArr[this.state.max_favorites_counter%6] = e.target.dataset.downscale
+      let newArr = this.state.favorites.slice(), max_favorite_limit = 6
+      newArr[this.state.max_favorites_counter%max_favorite_limit] = e.target.dataset.downscale
       this.setState({
         favorites: newArr,
         max_favorites_counter: this.state.max_favorites_counter + 1
