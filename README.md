@@ -15,4 +15,4 @@ join the listing, offset from the end of the previous end of listings.
 ---
 4. __Viewing GIF's information/ Adding favorites:__  
   - To see a gif's information, click any gif on the bottom of the page. This should replace the initial umbrella gif, which served as a placeholder. If the user clicks then on the image within the gif information section, it will add this to the user's favorite's section, which will display after at least one gif is favorited.  
-  (_User should note that after adding at least 6 gifs, a warning will appear that any additional added gifs will start replacing the previous gifs. If a 7th gif is added, the previous 1st gif of the six will be replaced. If an 8th gif is added, the 2nd gif of the six will be replaced and so forth._)
+  (_User should note that after adding at least 6 gifs, a warning will appear that any additional added gifs will start replacing the previous gifs in an overlapping manner. If a 7th gif is added, the previous 1st gif of the six will be replaced. If an 8th gif is added, the 2nd gif of the six will be replaced and so forth._)
