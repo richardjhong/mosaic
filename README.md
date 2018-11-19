@@ -1,5 +1,5 @@
 1. __Installation/ Run instructions:__  
-  - After downloading repository, run `npm install`. This will include a new dependency __superagent__ [https://www.npmjs.com/package/superagent].
+  - After downloading repository, run `npm install`.
 
   - Run `npm start`. The default port will be 3000.
  ---
@@ -9,7 +9,7 @@ order by the import_datetime. Upon the user's scrolling to the bottom of the pag
 join the listing, offset from the end of the previous end of listings.
 ---
 3. __Changing behavior:__  
-  - To change the perimeter for sort, the user can choose between the four radio options: score, rating, import date time, and title as well as in ascending or descending order.
+  - To change the parameter for sort, the user can choose between the four radio options: score, rating, import date time, and title as well as in ascending or descending order.
 
   - The search criterion will be trending by default but can be made to search specifically via typing in the input field and pressing the enter key. If this input field is left blank, the search will revert to looking up the latest trending gifs.
 ---
