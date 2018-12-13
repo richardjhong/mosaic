@@ -31,17 +31,17 @@ class Listings extends Component {
 
   componentDidMount() {
       window.addEventListener('scroll', this.onScroll, false)
-      this.ajaxCall()
+      this.grabGiphyGifs()
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, false)
   }
 
-  ajaxCall = () => {
-    let x = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : 'trending?'
+  grabGiphyGifs = () => {
+    let searchWord = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : 'trending?'
     app
-    .get(`http://api.giphy.com/v1/gifs/${x}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&limit=50`)
+    .get(`http://api.giphy.com/v1/gifs/${searchWord}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&limit=50`)
     .end((error, response) => {
       if (error) {
         alert (error)
@@ -52,14 +52,13 @@ class Listings extends Component {
   }
 
   onScroll = () => {
-    let x = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`,
-        y = this.state.searchQuery.length > 0 ? `${this.state.searchQuery}` : `what's trending now`
+    let customSearchGifs = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`,
+        trendingGifs = this.state.searchQuery.length > 0 ? `${this.state.searchQuery}` : `what's trending now`
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      window.alert(`Loading additional 4 images on ${y}`)
       this.setState({
         offset: this.state.offset + 4
       })
-      app.get(`http://api.giphy.com/v1/gifs/${x}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&offset=${this.state.offset}&limit=4`)
+      app.get(`http://api.giphy.com/v1/gifs/${customSearchGifs}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&offset=${this.state.offset}&limit=4`)
       .end((error, response) => {
         if (error) {
           alert (error)
@@ -108,7 +107,7 @@ class Listings extends Component {
   }
 
   handleTextSubmission = () => {
-    this.ajaxCall()
+    this.grabGiphyGifs()
   }
 
   handleFavoriteClick = (e) => {
@@ -138,13 +137,12 @@ class Listings extends Component {
     this.setState({
       searchQuery: ''
     })
-    this.ajaxCall()
+    this.grabGiphyGifs()
   }
 
   onCommentSubmit = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault()
-      window.alert('Now showing listings for: ' + this.state.searchQuery)
       this.handleTextSubmission()
     }
   }
@@ -166,7 +164,7 @@ class Listings extends Component {
               <SearchQuery
                onChange={this.handleTextChange}
                onKeyDown={this.onCommentSubmit}
-               onClick={this.ajaxCall}
+               onClick={this.grabGiphyGifs}
                trendingClick={this.handleTrendingClick}
                searchQuery={this.state.searchQuery}/>
             </div>
