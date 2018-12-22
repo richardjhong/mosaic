@@ -11,8 +11,8 @@ class Images extends PureComponent {
             <img
               onClick={this.props.handleClick}
               src={gif.images.fixed_height_small.url}
-              alt='gif_img'
-              name={gif.title || 'filler'} 
+              alt={gif.slug}
+              name={gif.title || 'filler'}
               data-time={gif.import_datetime}
               data-original={gif.images.original.url}
               data-rating={gif.rating}

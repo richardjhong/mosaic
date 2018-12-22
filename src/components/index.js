@@ -73,10 +73,12 @@ class Listings extends Component {
   }
 
   handleClick = (e) => {
+    console.log('test', e.target)
     let newImg = {
       src: e.target.src,
       original: e.target.dataset.original,
       title: e.target.name,
+      altName: e.target.slug,
       time: e.target.dataset.time,
       score: e.target.dataset.score,
       rating: e.target.dataset.rating.toUpperCase(),

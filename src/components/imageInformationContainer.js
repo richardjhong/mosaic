@@ -16,7 +16,7 @@ class ImageInformation extends PureComponent {
             <img
              src={this.props.information.src}
              onClick={this.props.handleFavoriteClick}
-             alt='info_img'
+             alt={this.props.information.altName}
              data-downscale={this.props.information.src}/>
             <figcaption>
               <h5>Click on the image above to add to favorites!</h5>
