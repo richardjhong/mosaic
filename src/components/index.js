@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import app from 'superagent';
 import SortButton from './handleSortButton'
 import SearchQuery from './searchQuery'
 import Filter from './filterContainer'
 import Images from './imagesContainer'
 import ImageInformation from './imageInformationContainer'
+import app from 'superagent';
 import './styles.css'
 
 class Listings extends Component {
@@ -52,8 +52,7 @@ class Listings extends Component {
   }
 
   onScroll = () => {
-    let customSearchGifs = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`,
-        trendingGifs = this.state.searchQuery.length > 0 ? `${this.state.searchQuery}` : `what's trending now`
+    let customSearchGifs = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : `trending?`
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       this.setState({
         offset: this.state.offset + 4
