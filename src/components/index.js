@@ -41,7 +41,7 @@ class Listings extends Component {
   grabGiphyGifs = () => {
     let searchWord = this.state.searchQuery.length > 0 ? `search?q=${this.state.searchQuery}` : 'trending?'
     app
-    .get(`http://api.giphy.com/v1/gifs/${searchWord}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&limit=50`)
+    .get(`http://api.giphy.com/v1/gifs/${searchWord}&api_key=DOSOoJ5LZbbtK8q5iv3Yaxj4qm0D6hxc&limit=100`)
     .end((error, response) => {
       if (error) {
         alert (error)
